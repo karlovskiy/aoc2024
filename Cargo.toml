@@ -12,3 +12,6 @@ criterion = "0.5.1"
 name = "historian_hysteria_bench"
 harness = false
 
+[[bench]]
+name = "red_nosed_reports_bench"
+harness = false
