@@ -15,3 +15,7 @@ harness = false
 [[bench]]
 name = "red_nosed_reports_bench"
 harness = false
+
+[[bench]]
+name = "mull_it_over_bench"
+harness = false

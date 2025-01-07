@@ -47,3 +47,26 @@ Found 8 outliers among 100 measurements (8.00%)
   4 (4.00%) high severe
 
 ```
+
+## Day 3: Mull It Over
+```
+$ cargo bench --bench mull_it_over_bench
+   Compiling aoc2024 v0.1.0 (/home/ravenstar/sources/aoc2024)
+    Finished `bench` profile [optimized] target(s) in 1.10s
+     Running benches/mull_it_over_bench.rs (target/release/deps/mull_it_over_bench-662c7dd85370e340)
+Mull It Over (Part 1)   time:   [41.099 µs 41.200 µs 41.309 µs]
+                        change: [-1.1797% -0.6073% +0.0830%] (p = 0.05 > 0.05)
+                        No change in performance detected.
+Found 9 outliers among 100 measurements (9.00%)
+  4 (4.00%) high mild
+  5 (5.00%) high severe
+
+Mull It Over (Part 2)   time:   [30.303 µs 30.519 µs 30.791 µs]
+                        change: [+0.3254% +0.8536% +1.5136%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 14 outliers among 100 measurements (14.00%)
+  1 (1.00%) low mild
+  6 (6.00%) high mild
+  7 (7.00%) high severe
+
+```
