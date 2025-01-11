@@ -74,19 +74,19 @@ $ cargo bench --bench ceres_search_bench
     Finished `bench` profile [optimized] target(s) in 0.02s
      Running benches/ceres_search_bench.rs (target/release/deps/ceres_search_bench-6e70a9a8becd9de3)
 Day 4: Ceres Search (Part 1)
-                        time:   [122.11 µs 122.62 µs 123.16 µs]
-                        change: [-0.2330% +0.4632% +1.2121%] (p = 0.24 > 0.05)
+                        time:   [123.44 µs 123.73 µs 124.04 µs]
+                        change: [-0.4874% +0.1368% +0.7055%] (p = 0.66 > 0.05)
                         No change in performance detected.
-Found 4 outliers among 100 measurements (4.00%)
+Found 3 outliers among 100 measurements (3.00%)
   1 (1.00%) high mild
-  3 (3.00%) high severe
+  2 (2.00%) high severe
 
 Day 4: Ceres Search (Part 2)
-                        time:   [49.257 µs 49.519 µs 49.798 µs]
-                        change: [-0.0509% +0.9077% +1.8917%] (p = 0.06 > 0.05)
+                        time:   [41.755 µs 41.985 µs 42.213 µs]
+                        change: [-0.9789% +0.0637% +0.9969%] (p = 0.90 > 0.05)
                         No change in performance detected.
-Found 4 outliers among 100 measurements (4.00%)
-  2 (2.00%) high mild
-  2 (2.00%) high severe
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
 
 ```

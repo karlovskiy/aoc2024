@@ -1,16 +1,10 @@
 pub fn part_one(data: &[u8]) -> u64 {
     let mut result = 0;
-    let mut n = 0;
     let mut m: i32;
     let mut a: i32;
     let mut s: i32;
+    let n = calculate_n_size(data);
     let len = data.len() as i32;
-    for i in 0..len {
-        if data[i as usize] == b'\n' {
-            n = i;
-            break;
-        }
-    }
     for x in 0..len {
         if data[x as usize] == b'X' {
             // right
@@ -108,18 +102,12 @@ pub fn part_one(data: &[u8]) -> u64 {
 
 pub fn part_two(data: &[u8]) -> u64 {
     let mut result = 0;
-    let mut n = 0;
     let mut m1: i32;
     let mut m2: i32;
     let mut s1: i32;
     let mut s2: i32;
+    let n = calculate_n_size(data);
     let len = data.len() as i32;
-    for i in 0..len {
-        if data[i as usize] == b'\n' {
-            n = i;
-            break;
-        }
-    }
     for a in 0..len {
         if data[a as usize] == b'A' {
             // M S
@@ -189,6 +177,16 @@ pub fn part_two(data: &[u8]) -> u64 {
         }
     }
     result
+}
+
+#[inline]
+fn calculate_n_size(data: &[u8]) -> i32 {
+    for i in 0..data.len() {
+        if data[i] == b'\n' {
+            return i as i32;
+        }
+    }
+    panic!("Bad data format");
 }
 
 #[cfg(test)]
