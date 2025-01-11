@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
-pub fn part_one(lines: &Vec<String>) -> u64 {
+pub fn part_one(data: &str) -> u64 {
     let mut left: Vec<u64> = vec![];
     let mut right: Vec<u64> = vec![];
-    for line in lines {
+    for line in data.lines() {
         let mut tokens = line.split_whitespace();
         match tokens.next() {
             Some(token) => left.push(token.to_string().parse().unwrap()),
@@ -21,14 +21,13 @@ pub fn part_one(lines: &Vec<String>) -> u64 {
     for i in 0..left.len() {
         total = total + left[i].abs_diff(right[i]);
     }
-    //println!("total: {total}");
     total
 }
 
-pub fn part_two(lines: &Vec<String>) -> u64 {
+pub fn part_two(data: &str) -> u64 {
     let mut left_nums: Vec<u64> = vec![];
     let mut right_nums_map: HashMap<u64, u64> = HashMap::new();
-    for line in lines {
+    for line in data.lines() {
         let mut tokens = line.split_whitespace();
         let left = {
             match tokens.next() {
@@ -53,6 +52,38 @@ pub fn part_two(lines: &Vec<String>) -> u64 {
             None => {}
         }
     }
-    //println!("total: {total}");
     total
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn part_one_example() {
+        let data = include_str!("testdata/historian_hysteria/example.txt");
+        let total = part_one(data);
+        assert_eq!(total, 11);
+    }
+
+    #[test]
+    fn part_one_full() {
+        let data = include_str!("testdata/historian_hysteria/input.txt");
+        let total = part_one(data);
+        assert_eq!(total, 2742123);
+    }
+
+    #[test]
+    fn part_two_example() {
+        let data = include_str!("testdata/historian_hysteria/example.txt");
+        let total = part_two(data);
+        assert_eq!(total, 31);
+    }
+
+    #[test]
+    fn part_two_full() {
+        let data = include_str!("testdata/historian_hysteria/input.txt");
+        let total = part_two(data);
+        assert_eq!(total, 21328497);
+    }
 }

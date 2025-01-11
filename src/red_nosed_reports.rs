@@ -1,6 +1,6 @@
-pub fn part_one(lines: &Vec<String>) -> u64 {
+pub fn part_one(data: &str) -> u64 {
     let mut safe = 0;
-    for line in lines {
+    for line in data.lines() {
         let mut tokens = line.split_whitespace();
         let mut direction: i8 = 0;
         let mut prev: i64 = -1;
@@ -29,13 +29,12 @@ pub fn part_one(lines: &Vec<String>) -> u64 {
             }
         }
     }
-    //println!("safe: {safe}");
     safe
 }
 
-pub fn part_two(lines: &Vec<String>) -> u64 {
+pub fn part_two(data: &str) -> u64 {
     let mut safe = 0;
-    for line in lines {
+    for line in data.lines() {
         let levels: Vec<i64> = line
             .split_whitespace()
             .map(|n| n.parse().unwrap())
@@ -78,6 +77,38 @@ pub fn part_two(lines: &Vec<String>) -> u64 {
             break 'start_level_loop;
         }
     }
-    //println!("safe: {safe}");
     safe
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn part_one_example() {
+        let data = include_str!("testdata/red_nosed_reports/example.txt");
+        let total = part_one(data);
+        assert_eq!(total, 2);
+    }
+
+    #[test]
+    fn part_one_full() {
+        let data = include_str!("testdata/red_nosed_reports/input.txt");
+        let total = part_one(data);
+        assert_eq!(total, 279);
+    }
+
+    #[test]
+    fn part_two_example() {
+        let data = include_str!("testdata/red_nosed_reports/example.txt");
+        let total = part_two(data);
+        assert_eq!(total, 4);
+    }
+
+    #[test]
+    fn part_two_full() {
+        let data = include_str!("testdata/red_nosed_reports/input.txt");
+        let total = part_two(data);
+        assert_eq!(total, 343);
+    }
 }

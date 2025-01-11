@@ -14,45 +14,39 @@ pub fn part_one(data: &[u8]) -> u64 {
     let mut left_chars: Vec<u8> = vec![];
     let mut right_chars: Vec<u8> = vec![];
     for b in data {
-        // m
-        if *b == 0x6d && state == 0 {
+        if *b == b'm' && state == 0 {
             state += 2;
             continue;
         }
-        // u
-        if *b == 0x75 && state == 2 {
+        if *b == b'u' && state == 2 {
             state += 4;
             continue;
         }
-        // l
-        if *b == 0x6c && state == 6 {
+        if *b == b'l' && state == 6 {
             state += 8;
             continue;
         }
-        // (
-        if *b == 0x28 && state == 14 {
+        if *b == b'(' && state == 14 {
             state += 16;
             left_chars.clear();
             continue;
         }
         // left number
-        if *b >= 0x30 && *b <= 0x39 && state == 30 {
+        if *b >= b'0' && *b <= b'9' && state == 30 {
             left_chars.push(*b);
             continue;
         }
-        // ,
-        if *b == 0x2c && state == 30 {
+        if *b == b',' && state == 30 {
             state += 32;
             right_chars.clear();
             continue;
         }
         // right number
-        if *b >= 0x30 && *b <= 0x39 && state == 62 {
+        if *b >= b'0' && *b <= b'9' && state == 62 {
             right_chars.push(*b);
             continue;
         }
-        // )
-        if *b == 0x29 && state == 62 {
+        if *b == b')' && state == 62 {
             let l: u64 = str::from_utf8(&left_chars).unwrap().parse().unwrap();
             let r: u64 = str::from_utf8(&right_chars).unwrap().parse().unwrap();
             total += l * r;
@@ -100,8 +94,7 @@ pub fn part_two(data: &[u8]) -> u64 {
                 enabled_state = upd_enabled_state;
                 continue;
             }
-            // )
-            if *b == 0x29 && enabled_state == 14 {
+            if *b == b')' && enabled_state == 14 {
                 enabled = true;
                 disabled_state = 0;
             }
@@ -113,8 +106,7 @@ pub fn part_two(data: &[u8]) -> u64 {
             disabled_state = upd_disabled_state;
             continue;
         }
-        // )
-        if *b == 0x29 && disabled_state == 126 {
+        if *b == b')' && disabled_state == 126 {
             enabled = false;
             enabled_state = 0;
             continue;
@@ -126,29 +118,27 @@ pub fn part_two(data: &[u8]) -> u64 {
             continue;
         }
         // (
-        if *b == 0x28 && mul_state == 14 {
+        if *b == b'(' && mul_state == 14 {
             mul_state += 16;
             left_chars.clear();
             continue;
         }
         // left number
-        if *b >= 0x30 && *b <= 0x39 && mul_state == 30 {
+        if *b >= b'0' && *b <= b'9' && mul_state == 30 {
             left_chars.push(*b);
             continue;
         }
-        // ,
-        if *b == 0x2c && mul_state == 30 {
+        if *b == b',' && mul_state == 30 {
             mul_state += 32;
             right_chars.clear();
             continue;
         }
         // right number
-        if *b >= 0x30 && *b <= 0x39 && mul_state == 62 {
+        if *b >= b'0' && *b <= b'9' && mul_state == 62 {
             right_chars.push(*b);
             continue;
         }
-        // )
-        if *b == 0x29 && mul_state == 62 {
+        if *b == b')' && mul_state == 62 {
             let l: u64 = str::from_utf8(&left_chars).unwrap().parse().unwrap();
             let r: u64 = str::from_utf8(&right_chars).unwrap().parse().unwrap();
             total += l * r;
@@ -159,18 +149,15 @@ pub fn part_two(data: &[u8]) -> u64 {
 }
 
 fn is_mul(mut state: u8, b: u8) -> u8 {
-    // m
-    if b == 0x6d && state == 0 {
+    if b == b'm' && state == 0 {
         state += 2;
         return state;
     }
-    // u
-    if b == 0x75 && state == 2 {
+    if b == b'u' && state == 2 {
         state += 4;
         return state;
     }
-    // l
-    if b == 0x6c && state == 6 {
+    if b == b'l' && state == 6 {
         state += 8;
         return state;
     }
@@ -178,18 +165,15 @@ fn is_mul(mut state: u8, b: u8) -> u8 {
 }
 
 fn is_enabled(mut state: u8, b: u8) -> u8 {
-    // d
-    if b == 0x64 && state == 0 {
+    if b == b'd' && state == 0 {
         state += 2;
         return state;
     }
-    // o
-    if b == 0x6f && state == 2 {
+    if b == b'o' && state == 2 {
         state += 4;
         return state;
     }
-    // (
-    if b == 0x28 && state == 6 {
+    if b == b'(' && state == 6 {
         state += 8;
         return state;
     }
@@ -197,33 +181,27 @@ fn is_enabled(mut state: u8, b: u8) -> u8 {
 }
 
 fn is_disabled(mut state: u8, b: u8) -> u8 {
-    // d
-    if b == 0x64 && state == 0 {
+    if b == b'd' && state == 0 {
         state += 2;
         return state;
     }
-    // o
-    if b == 0x6f && state == 2 {
+    if b == b'o' && state == 2 {
         state += 4;
         return state;
     }
-    // n
-    if b == 0x6e && state == 6 {
+    if b == b'n' && state == 6 {
         state += 8;
         return state;
     }
-    // '
-    if b == 0x27 && state == 14 {
+    if b == b'\'' && state == 14 {
         state += 16;
         return state;
     }
-    // t
-    if b == 0x74 && state == 30 {
+    if b == b't' && state == 30 {
         state += 32;
         return state;
     }
-    // (
-    if b == 0x28 && state == 62 {
+    if b == b'(' && state == 62 {
         state += 64;
         return state;
     }
