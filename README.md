@@ -68,7 +68,6 @@ Found 15 outliers among 100 measurements (15.00%)
 ```
 
 ## Day 4: Ceres Search
-
 ```
 $ cargo bench --bench ceres_search_bench
     Finished `bench` profile [optimized] target(s) in 0.02s
@@ -88,5 +87,25 @@ Day 4: Ceres Search (Part 2)
 Found 2 outliers among 100 measurements (2.00%)
   1 (1.00%) high mild
   1 (1.00%) high severe
+
+```
+
+## Day 5: Print Queue
+```
+$ cargo bench --bench print_queue_bench
+    Finished `bench` profile [optimized] target(s) in 0.94s
+     Running benches/print_queue_bench.rs (target/release/deps/print_queue_bench-d41d96e0bd714bc5)
+Print Queue (Part 1)    time:   [1.2261 ms 1.2290 ms 1.2324 ms]
+                        change: [-0.5601% -0.1470% +0.2784%] (p = 0.51 > 0.05)
+                        No change in performance detected.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+
+Print Queue (Part 2)    time:   [23.044 ms 23.091 ms 23.146 ms]
+                        change: [-0.2906% +0.0926% +0.4438%] (p = 0.63 > 0.05)
+                        No change in performance detected.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high severe
 
 ```
