@@ -93,19 +93,22 @@ Found 2 outliers among 100 measurements (2.00%)
 ## Day 5: Print Queue
 ```
 $ cargo bench --bench print_queue_bench
-    Finished `bench` profile [optimized] target(s) in 0.94s
+    Finished `bench` profile [optimized] target(s) in 0.92s
      Running benches/print_queue_bench.rs (target/release/deps/print_queue_bench-d41d96e0bd714bc5)
-Print Queue (Part 1)    time:   [1.2261 ms 1.2290 ms 1.2324 ms]
-                        change: [-0.5601% -0.1470% +0.2784%] (p = 0.51 > 0.05)
-                        No change in performance detected.
-Found 5 outliers among 100 measurements (5.00%)
-  3 (3.00%) high mild
-  2 (2.00%) high severe
+Print Queue (Part 1)    time:   [233.75 µs 235.74 µs 238.10 µs]
+                        change: [+0.0048% +0.7279% +1.5264%] (p = 0.05 < 0.05)
+                        Change within noise threshold.
+Found 11 outliers among 100 measurements (11.00%)
+  4 (4.00%) high mild
+  7 (7.00%) high severe
 
-Print Queue (Part 2)    time:   [23.044 ms 23.091 ms 23.146 ms]
-                        change: [-0.2906% +0.0926% +0.4438%] (p = 0.63 > 0.05)
-                        No change in performance detected.
-Found 2 outliers among 100 measurements (2.00%)
-  2 (2.00%) high severe
+Print Queue (Part 2)    time:   [3.6260 ms 3.6319 ms 3.6387 ms]
+                        change: [-4.4110% -2.8852% -1.5670%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 11 outliers among 100 measurements (11.00%)
+  1 (1.00%) low mild
+  7 (7.00%) high mild
+  3 (3.00%) high severe
+
 
 ```

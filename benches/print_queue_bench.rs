@@ -18,7 +18,7 @@ pub fn part_two_benchmark(c: &mut Criterion) {
 
 criterion_group! {
     name = benches;
-  config = Criterion::default().measurement_time(Duration::from_secs(15));
+  config = Criterion::default().measurement_time(Duration::from_secs(20));
   targets = part_one_benchmark, part_two_benchmark
 }
 criterion_main!(benches);
