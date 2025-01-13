@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 pub fn part_one(data: &str) -> u64 {
     let mut result: u64 = 0;
-    let mut order_rules_map: HashSet<u64> = HashSet::new();
+    let mut order_rules_set: HashSet<u64> = HashSet::new();
     let mut rules_read = false;
     'lines_loop: for line in data.lines() {
         if !rules_read {
@@ -16,7 +16,7 @@ pub fn part_one(data: &str) -> u64 {
                     Some(v) => {
                         let rule = ((v.0.parse::<u64>().unwrap() & 0xffff) << 16)
                             | (v.1.parse::<u64>().unwrap() & 0xffff);
-                        order_rules_map.insert(rule);
+                        order_rules_set.insert(rule);
                     }
                 }
             }
@@ -35,7 +35,7 @@ pub fn part_one(data: &str) -> u64 {
                 let other_page = pages[j];
                 if j > i {
                     let rule = ((page & 0xffff) << 16) | (other_page & 0xffff);
-                    match order_rules_map.get(&rule) {
+                    match order_rules_set.get(&rule) {
                         Some(_v) => {}
                         None => {
                             continue 'lines_loop;
@@ -44,7 +44,7 @@ pub fn part_one(data: &str) -> u64 {
                 }
                 if j < i {
                     let rule = ((other_page & 0xffff) << 16) | (page & 0xffff);
-                    match order_rules_map.get(&rule) {
+                    match order_rules_set.get(&rule) {
                         Some(_v) => {}
                         None => {
                             break 'lines_loop;
@@ -61,7 +61,7 @@ pub fn part_one(data: &str) -> u64 {
 
 pub fn part_two(data: &str) -> u64 {
     let mut result: u64 = 0;
-    let mut order_rules_map: HashSet<u64> = HashSet::new();
+    let mut order_rules_set: HashSet<u64> = HashSet::new();
     let mut rules_read = false;
     for line in data.lines() {
         if !rules_read {
@@ -75,7 +75,7 @@ pub fn part_two(data: &str) -> u64 {
                     Some(v) => {
                         let rule = ((v.0.parse::<u64>().unwrap() & 0xffff) << 16)
                             | (v.1.parse::<u64>().unwrap() & 0xffff);
-                        order_rules_map.insert(rule);
+                        order_rules_set.insert(rule);
                     }
                 }
             }
@@ -99,7 +99,7 @@ pub fn part_two(data: &str) -> u64 {
                 let other_page = pages[j];
                 if j > i {
                     let rule = ((page & 0xffff) << 16) | (other_page & 0xffff);
-                    match order_rules_map.get(&rule) {
+                    match order_rules_set.get(&rule) {
                         Some(_v) => {}
                         None => {
                             let temp = pages[j];
