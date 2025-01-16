@@ -27,3 +27,7 @@ harness = false
 [[bench]]
 name = "print_queue_bench"
 harness = false
+
+[[bench]]
+name = "guard_gallivant_bench"
+harness = false

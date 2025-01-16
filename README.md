@@ -112,3 +112,25 @@ Found 11 outliers among 100 measurements (11.00%)
 
 
 ```
+
+## Day 6: Guard Gallivant
+```
+$ cargo bench --bench guard_gallivant_bench
+    Finished `bench` profile [optimized] target(s) in 1.22s
+     Running benches/guard_gallivant_bench.rs (target/release/deps/guard_gallivant_bench-d01d7bdcf149c3eb)
+Guard Gallivant (Part 1)
+                        time:   [131.01 µs 131.49 µs 132.09 µs]
+                        change: [-3.7277% -1.7362% -0.2131%] (p = 0.05 > 0.05)
+                        No change in performance detected.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high severe
+
+part_two_benchmark/Guard Gallivant (Part 2)
+                        time:   [1.7536 s 1.7548 s 1.7560 s]
+                        change: [-3.1067% -2.1062% -1.2417%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 100 measurements (3.00%)
+  1 (1.00%) low mild
+  2 (2.00%) high mild
+
+```
