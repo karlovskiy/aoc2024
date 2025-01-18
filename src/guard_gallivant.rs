@@ -48,23 +48,11 @@ pub fn part_one(data: &[u8]) -> u64 {
                     i = i + 1;
                     continue;
                 }
-                match direction {
-                    1 => {
-                        direction = 2;
-                        i = i + n;
-                    }
-                    2 => {
-                        direction = 3;
-                        i = i - 1;
-                    }
-                    3 => {
-                        direction = 4;
-                        i = i - n;
-                    }
-                    4 => {
-                        direction = 1;
-                        i = i + 1;
-                    }
+                (direction, i) = match direction {
+                    1 => (2, i + n),
+                    2 => (3, i - 1),
+                    3 => (4, i - n),
+                    4 => (1, i + 1),
                     _ => panic!("invalid direction: {direction}"),
                 }
             }
@@ -74,11 +62,11 @@ pub fn part_one(data: &[u8]) -> u64 {
                     continue;
                 }
                 positions_set.insert(i);
-                match direction {
-                    1 => i = i - n,
-                    2 => i = i + 1,
-                    3 => i = i + n,
-                    4 => i = i - 1,
+                i = match direction {
+                    1 => i - n,
+                    2 => i + 1,
+                    3 => i + n,
+                    4 => i - 1,
                     _ => panic!("invalid direction: {direction}"),
                 }
             }
@@ -90,8 +78,8 @@ pub fn part_one(data: &[u8]) -> u64 {
 pub fn part_two(data: &[u8]) -> u64 {
     let mut result = 0;
     let mut n = 0;
-    let mut start_direction = 0;
-    let mut start_index = 0;
+    let mut guard_direction = 0;
+    let mut guard_index = 0;
     let len = data.len() as i32;
     // loop over data to get start_direction, start_index and n
     for i in 0..len {
@@ -103,42 +91,43 @@ pub fn part_two(data: &[u8]) -> u64 {
                 }
             }
             b'^' => {
-                start_direction = 1;
-                start_index = i;
+                guard_direction = 1;
+                guard_index = i;
                 break;
             }
             b'>' => {
-                start_direction = 2;
-                start_index = i;
+                guard_direction = 2;
+                guard_index = i;
                 break;
             }
             b'v' => {
-                start_direction = 3;
-                start_index = i;
+                guard_direction = 3;
+                guard_index = i;
                 break;
             }
             b'<' => {
-                start_direction = 4;
-                start_index = i;
+                guard_direction = 4;
+                guard_index = i;
                 break;
             }
             _ => {}
         }
     }
+    let start_index = match guard_direction {
+        1 => guard_index - n,
+        2 => guard_index + 1,
+        3 => guard_index + n,
+        4 => guard_index - 1,
+        _ => panic!("invalid guard direction: {guard_direction}"),
+    };
     let mut positions_set: HashSet<u64> = HashSet::new();
     // loop over each possible new obstruction position
     for k in 0..len {
-        if k == start_index {
+        if k == guard_index {
             continue;
         }
-        let mut direction: u8 = start_direction;
-        let mut i: i32 = match start_direction {
-            1 => start_index - n,
-            2 => start_index + 1,
-            3 => start_index + n,
-            4 => start_index - 1,
-            _ => panic!("invalid start direction: {start_direction}"),
-        };
+        let mut direction: u8 = guard_direction;
+        let mut i = start_index;
         positions_set.clear();
         // loop over positions
         loop {
@@ -163,32 +152,24 @@ pub fn part_two(data: &[u8]) -> u64 {
                 c = b'#';
             }
             match c {
-                b'#' => match direction {
-                    1 => {
-                        direction = 2;
-                        i = i + n;
+                b'#' => {
+                    (direction, i) = match direction {
+                        1 => (2, i + n),
+                        2 => (3, i - 1),
+                        3 => (4, i - n),
+                        4 => (1, i + 1),
+                        _ => panic!("invalid direction: {direction}"),
                     }
-                    2 => {
-                        direction = 3;
-                        i = i - 1;
+                }
+                _ => {
+                    i = match direction {
+                        1 => i - n,
+                        2 => i + 1,
+                        3 => i + n,
+                        4 => i - 1,
+                        _ => panic!("invalid direction: {direction}"),
                     }
-                    3 => {
-                        direction = 4;
-                        i = i - n;
-                    }
-                    4 => {
-                        direction = 1;
-                        i = i + 1;
-                    }
-                    _ => panic!("invalid direction: {direction}"),
-                },
-                _ => match direction {
-                    1 => i = i - n,
-                    2 => i = i + 1,
-                    3 => i = i + n,
-                    4 => i = i - 1,
-                    _ => panic!("invalid direction: {direction}"),
-                },
+                }
             }
         }
     }
