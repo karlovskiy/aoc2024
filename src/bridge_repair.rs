@@ -28,24 +28,25 @@ pub fn part_two(data: &str) -> u64 {
     for line in data.lines() {
         let (calibration, nums) = parse_line(line);
         let n = nums.len();
-        // 4^(n-1) combinations
-        let combinations = 1 << (2 * (n - 1));
-        for m in 0..combinations {
+        // 3^(n-1) combinations
+        let combinations = 3usize.pow((n - 1) as u32);
+        for k in 0..combinations {
             let mut result = 0;
+            let mut m = k;
             for i in 0..n {
                 let num = nums[i];
                 if i == 0 {
                     result += num;
                     continue;
                 }
-                // extract 2 bits by modulo 3
-                let op = ((m >> ((i - 1) * 2)) & 3) % 3;
+                let op = m % 3;
                 match op {
                     0 => result += num,
                     1 => result *= num,
                     2 => result = result * 10u64.pow(num.ilog10() + 1) + num,
                     _ => panic!("invalid operation: {op}"),
                 };
+                m /= 3;
             }
             if result == calibration {
                 total += calibration;
