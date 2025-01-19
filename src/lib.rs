@@ -4,3 +4,4 @@ pub mod mull_it_over;
 pub mod ceres_search;
 pub mod print_queue;
 pub mod guard_gallivant;
+pub mod bridge_repair;

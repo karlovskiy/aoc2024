@@ -31,3 +31,7 @@ harness = false
 [[bench]]
 name = "guard_gallivant_bench"
 harness = false
+
+[[bench]]
+name = "bridge_repair_bench"
+harness = false

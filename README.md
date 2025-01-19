@@ -21,7 +21,6 @@ Historian Hysteria (Part 2)
 Found 7 outliers among 100 measurements (7.00%)
   4 (4.00%) high mild
   3 (3.00%) high severe
-
 ```
 
 ## Day 2: Red-Nosed Reports
@@ -43,7 +42,6 @@ Red-Nosed Reports (Part 2)
                         No change in performance detected.
 Found 2 outliers among 100 measurements (2.00%)
   2 (2.00%) high severe
-
 ```
 
 ## Day 3: Mull It Over
@@ -64,7 +62,6 @@ Mull It Over (Part 2)   time:   [44.619 µs 44.839 µs 45.098 µs]
 Found 15 outliers among 100 measurements (15.00%)
   6 (6.00%) high mild
   9 (9.00%) high severe
-
 ```
 
 ## Day 4: Ceres Search
@@ -87,7 +84,6 @@ Day 4: Ceres Search (Part 2)
 Found 2 outliers among 100 measurements (2.00%)
   1 (1.00%) high mild
   1 (1.00%) high severe
-
 ```
 
 ## Day 5: Print Queue
@@ -109,8 +105,6 @@ Found 11 outliers among 100 measurements (11.00%)
   1 (1.00%) low mild
   7 (7.00%) high mild
   3 (3.00%) high severe
-
-
 ```
 
 ## Day 6: Guard Gallivant
@@ -132,6 +126,26 @@ part_two_benchmark/Guard Gallivant (Part 2)
                         Performance has improved.
 Found 3 outliers among 100 measurements (3.00%)
   3 (3.00%) high severe
+```
 
+## Day 7: Bridge Repair
+```
+$ cargo bench --bench bridge_repair_bench
+    Finished `bench` profile [optimized] target(s) in 0.07s
+     Running benches/bridge_repair_bench.rs (target/release/deps/bridge_repair_bench-5f654c3ae390cbea)
+Bridge Repair (Part 1)  time:   [989.35 µs 992.93 µs 997.19 µs]
+                        change: [-0.1573% +0.3061% +0.7732%] (p = 0.26 > 0.05)
+                        No change in performance detected.
+Found 11 outliers among 100 measurements (11.00%)
+  4 (4.00%) high mild
+  7 (7.00%) high severe
 
+Benchmarking part_two_benchmark/Bridge Repair (Part 2): Warming up for 3.0000 s
+Warning: Unable to complete 100 samples in 30.0s. You may wish to increase target time to 392.8s, or reduce sample count to 10.
+part_two_benchmark/Bridge Repair (Part 2)
+                        time:   [3.9481 s 3.9518 s 3.9557 s]
+                        change: [-0.4491% -0.2499% -0.0836%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
 ```
