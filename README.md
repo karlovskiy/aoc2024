@@ -149,3 +149,25 @@ Found 8 outliers among 100 measurements (8.00%)
   1 (1.00%) high mild
   7 (7.00%) high severe
 ```
+
+## Day 8: Resonant Collinearity
+```
+$ cargo bench --bench resonant_collinearity_bench
+    Finished `bench` profile [optimized] target(s) in 0.02s
+     Running benches/resonant_collinearity_bench.rs (target/release/deps/resonant_collinearity_bench-235ad185b6e2d532)
+Day 8: Resonant Collinearity (Part 1)
+                        time:   [181.67 µs 183.32 µs 185.49 µs]
+                        change: [-3.7732% -1.4292% +0.4060%] (p = 0.21 > 0.05)
+                        No change in performance detected.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+
+Day 8: Resonant Collinearity (Part 2)
+                        time:   [379.12 µs 381.95 µs 385.12 µs]
+                        change: [-0.9173% +0.3904% +1.7637%] (p = 0.57 > 0.05)
+                        No change in performance detected.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high severe
+
+```

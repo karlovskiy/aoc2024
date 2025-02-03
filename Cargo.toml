@@ -35,3 +35,7 @@ harness = false
 [[bench]]
 name = "bridge_repair_bench"
 harness = false
+
+[[bench]]
+name = "resonant_collinearity_bench"
+harness = false
