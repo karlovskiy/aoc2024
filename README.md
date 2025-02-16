@@ -169,5 +169,22 @@ Day 8: Resonant Collinearity (Part 2)
                         No change in performance detected.
 Found 4 outliers among 100 measurements (4.00%)
   4 (4.00%) high severe
+```
 
+## Day 9: Disk Fragmenter
+```
+~/sources/aoc2024 $ cargo bench --bench disk_fragmenter_bench
+   Compiling aoc2024 v0.1.0 (/home/ravenstar/sources/aoc2024)
+    Finished `bench` profile [optimized] target(s) in 0.91s
+     Running benches/disk_fragmenter_bench.rs (target/release/deps/disk_fragmenter_bench-6f01ca9093573634)
+Disk Fragmenter (Part 1)
+                        time:   [403.74 ms 406.27 ms 410.04 ms]
+Found 15 outliers among 100 measurements (15.00%)
+  1 (1.00%) high mild
+  14 (14.00%) high severe
+
+Disk Fragmenter (Part 2)
+                        time:   [403.24 ms 403.63 ms 404.09 ms]
+Found 9 outliers among 100 measurements (9.00%)
+  9 (9.00%) high severe
 ```
