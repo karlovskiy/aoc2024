@@ -173,7 +173,7 @@ Found 4 outliers among 100 measurements (4.00%)
 
 ## Day 9: Disk Fragmenter
 ```
-~/sources/aoc2024 $ cargo bench --bench disk_fragmenter_bench
+$ cargo bench --bench disk_fragmenter_bench
    Compiling aoc2024 v0.1.0 (/home/ravenstar/sources/aoc2024)
     Finished `bench` profile [optimized] target(s) in 0.91s
      Running benches/disk_fragmenter_bench.rs (target/release/deps/disk_fragmenter_bench-6f01ca9093573634)
