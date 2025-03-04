@@ -43,3 +43,7 @@ harness = false
 [[bench]]
 name = "disk_fragmenter_bench"
 harness = false
+
+[[bench]]
+name = "hoof_it_bench"
+harness = false

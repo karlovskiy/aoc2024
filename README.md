@@ -188,3 +188,23 @@ Disk Fragmenter (Part 2)
 Found 9 outliers among 100 measurements (9.00%)
   9 (9.00%) high severe
 ```
+## Day 10: Hoof It
+```
+$ cargo bench --bench hoof_it_bench
+    Finished `bench` profile [optimized] target(s) in 0.02s
+     Running benches/hoof_it_bench.rs (target/release/deps/hoof_it_bench-56e858f88ba7e065)
+Hoof It (Part 1)        time:   [29.624 µs 29.768 µs 29.945 µs]
+                        change: [-0.6254% +0.2448% +1.1460%] (p = 0.61 > 0.05)
+                        No change in performance detected.
+Found 5 outliers among 100 measurements (5.00%)
+  1 (1.00%) high mild
+  4 (4.00%) high severe
+
+Hoof It (Part 2)        time:   [21.995 µs 22.114 µs 22.242 µs]
+                        change: [+0.5151% +1.5257% +2.6821%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 8 outliers among 100 measurements (8.00%)
+  4 (4.00%) high mild
+  4 (4.00%) high severe
+
+```
